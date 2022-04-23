@@ -32,10 +32,6 @@ variable "subnet_id" {
   description = "Subnet"
   default     = "e2lmcv4ijpe3ro522253"
 }
-variable "external_ipv4" {
-  description = "External IPV4 adress"
-  default     = "51.250.28.254"
-}
 variable "instance_count" {
   description = "Number of instances to create"
   default     = 1
@@ -51,7 +47,4 @@ variable "node_service_account_id" {
 variable "service_account_key_file" {
   description = "service account key file"
   default     = "key.json"
-}
-variable "cluster_id" {
-  description = "yandex k8s cluster id"
 }
