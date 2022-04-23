@@ -43,7 +43,7 @@ resource "yandex_kubernetes_cluster" "zonal_cluster_resource_name" {
   service_account_id      = var.service_account_id
   node_service_account_id = var.node_service_account_id
 
-  release_channel = "RAPID"
+  release_channel         = "RAPID"
   network_policy_provider = "CALICO"
 
 }
