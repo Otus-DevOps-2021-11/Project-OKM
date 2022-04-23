@@ -30,3 +30,11 @@
 2. В файлах `variables.tf` и `terraform.tfvars` заменить значения всех переменных (кроме переменной `instance count`).
 3. Выполнить команду `terraform init`
 4. Выполнить команду `terraform apply`
+
+### Docker образы
+
+Запилил 2 образа crawler и crawler_ui соотвественно
+Запушил их в свою репу opopovich85/crawler и opopovich85/сrawler_ui
+crawler_ui не хватило requirements.txt добавил туда markupsafe
+Хотел запустить на более-менее свежем python-3.8-alpine,словил exception,откатился на версию 3.6
+На данный момент оба приложения хотят видеть монгу и кролика
