@@ -52,3 +52,6 @@ variable "service_account_key_file" {
   description = "service account key file"
   default     = "key.json"
 }
+variable "cluster_id" {
+  description = "yandex k8s cluster id"
+}
