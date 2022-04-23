@@ -1,5 +1,5 @@
 resource "yandex_kubernetes_node_group" "my_node_group" {
-  cluster_id  = var.cluster_id
+  cluster_id  = yandex_kubernetes_cluster.zonal_cluster_resource_name.id
   name        = "node1"
   description = "Node"
   version     = "1.19"
