@@ -38,11 +38,9 @@ variable "instance_count" {
 }
 variable "service_account_id" {
   description = "service account id"
-  default     = "ajehu5bu9371elilueo3"
 }
 variable "node_service_account_id" {
   description = "node service account id"
-  default     = "ajehu5bu9371elilueo3"
 }
 variable "service_account_key_file" {
   description = "service account key file"
