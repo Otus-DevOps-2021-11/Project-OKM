@@ -6,4 +6,4 @@
 .terraform.lock.*
 .terraform.tfstate.*
 *.tfvars
-*.DS_Store
+.DS_Store
