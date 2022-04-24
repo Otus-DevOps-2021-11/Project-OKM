@@ -30,6 +30,9 @@
 2. В файлах `variables.tf` и `terraform.tfvars` заменить значения всех переменных (кроме переменной `instance count`).
 3. Выполнить команду `terraform init`
 4. Выполнить команду `terraform apply`
+5. После создания кластера чтобы к нему подключиться в консоли Host'a выполнить команду 
+   `yc managed-kubernetes cluster get-credentials okmacluster --external --force`
+6. Для создания неймспейса перейти в каталог `kubernetes/app` и выполнить команду `kubectl apply -f namespace.yml`
 
 ### Docker образы
 
