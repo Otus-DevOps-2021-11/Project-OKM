@@ -39,7 +39,7 @@ def connect_db():
 
 def connect_to_mq():
     try:
-        credentials = PlainCredentials(mquser, mqpass)
+        credentials = PlainCredentials(guest, guest)
         rabbit = BlockingConnection(ConnectionParameters(
             host=mqhost,
             connection_attempts=10,

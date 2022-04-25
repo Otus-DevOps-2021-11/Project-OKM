@@ -7,4 +7,4 @@ ENV CRAWLERAPP=crawler.py
 ENV MONGO mongo
 ENV MONGO_PORT 27017
 ENV RMQ_HOST rabbit
-CMD  ["python", "-u", "crawler.py","https://vitkhab.github.io/search_engine_test_site/"]
+CMD  ["EXCLUDE_URLS='.*github.com'","python", "-u", "crawler.py","https://vitkhab.github.io/search_engine_test_site/"]
