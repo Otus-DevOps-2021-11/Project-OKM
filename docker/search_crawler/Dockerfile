@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.9-alpine
 RUN mkdir -p /run/crawlerapp
 COPY crawlerapp /run/crawlerapp
 RUN pip install --no-cache-dir -r /run/crawlerapp/requirements.txt

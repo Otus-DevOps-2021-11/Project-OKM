@@ -5,7 +5,7 @@ services:
     networks:
       - appnet
   crawler_ui:
-    image: opopovich85/crawler_ui:latest
+    image: jakui/crawler_ui:latest
     ports:
       - 8000:8000/tcp
     networks:
