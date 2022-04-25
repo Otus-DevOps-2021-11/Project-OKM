@@ -7,6 +7,9 @@ ENV CRAWLERAPP=crawler.py
 ENV MONGO mongo
 ENV MONGO_PORT 27017
 ENV RMQ_HOST rabbit
+ENV RMQ_QUEUE urls
+ENV RMQ_USERNAME rabbitmq
+ENV RMQ_PASSWORD rabbitmq
 ENV EXCLUDE_URLS '.*github.com'
 
 #Это добавлено с просторов энторнетов чтобы приложение ожидало RabbitMQ и не падало сразу при старте

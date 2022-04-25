@@ -16,7 +16,7 @@ services:
     #    fluentd-address: localhost:24224
     #    tag: service.crawler_ui
   crawler:
-    image: 4utep/crawler:latest
+    image: opopovich85/crawler:latest
     networks:
       - appnet
     environment:
