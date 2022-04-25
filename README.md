@@ -36,6 +36,9 @@
 
 ### Docker образы
 
+Для работы приложения в dockerfil'ах изменили версию python на 3.9, также изменили зависимости приложения (файлы
+requirements.txt): обновили используемую версию flask до 2.0.3
+
 Запилил 2 образа crawler и crawler_ui соотвественно
 
 Запушил их в свою репу opopovich85/crawler и opopovich85/сrawler_ui
