@@ -16,9 +16,11 @@ services:
     #    fluentd-address: localhost:24224
     #    tag: service.crawler_ui
   crawler:
-     image: 4utep/crawler:latest
-     networks:
-       - appnet
+    image: 4utep/crawler:latest
+    networks:
+      - appnet
+    environment:
+      WAIT_HOSTS: rabbit:15672
      #logging:
      # driver: "fluentd"
      # options:
