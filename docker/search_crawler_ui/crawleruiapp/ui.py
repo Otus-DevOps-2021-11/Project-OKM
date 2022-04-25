@@ -1,4 +1,4 @@
-from flask import Flask, request, g, render_template, logging, Response
+from flask import Flask, request, g, render_template, logging, Response  #TO DO need to remove "logging" from import
 from functools import reduce
 from os import getenv
 import uuid
