@@ -55,3 +55,7 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 
 Добавил fluentd,собрал образ opopovich85/fluentd:latest.Сделал зачатки compose для логирования.
 
+Допилил compose для логирования до конца. Решены проблемы с совместимостью плагина для fluentd и версии elasticsearch.
+
+Решил проблему с падением elasticsearch из-за нехватки памяти.
+

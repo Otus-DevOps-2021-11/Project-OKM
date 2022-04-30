@@ -10,22 +10,22 @@ services:
       - 8000:8000/tcp
     networks:
       - appnet
-    #logging:
-    #  driver: "fluentd"
-    #  options:
-    #    fluentd-address: localhost:24224
-    #    tag: service.crawler_ui
+    logging:
+     driver: "fluentd"
+     options:
+       fluentd-address: localhost:24224
+       tag: service.crawler_ui
   crawler:
     image: 4utep/crawler:latest
     networks:
       - appnet
     environment:
       WAIT_HOSTS: rabbit:15672
-     #logging:
-     # driver: "fluentd"
-     # options:
-     #   fluentd-address: localhost:24224
-     #   tag: service.crawler
+    logging:
+     driver: "fluentd"
+     options:
+       fluentd-address: localhost:24224
+       tag: service.crawler
 
   rabbit:
    image: rabbitmq:3-management 
