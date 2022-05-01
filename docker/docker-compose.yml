@@ -5,7 +5,7 @@ services:
     networks:
       - appnet
   crawler_ui:
-    image: jakui/crawler_ui:latest
+    image: ${USER}/crawler_ui:latest
     ports:
       - 8000:8000/tcp
     networks:
@@ -16,7 +16,7 @@ services:
        fluentd-address: localhost:24224
        tag: service.crawler_ui
   crawler:
-    image: 4utep/crawler:latest
+    image: ${USER}/crawler:latest
     networks:
       - appnet
     environment:
