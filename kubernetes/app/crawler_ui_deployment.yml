@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler-ui
+  labels:
+    app: crawler
+    component: crawler-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+      component: crawler-ui
+  template:
+    metadata:
+      name: crawler-ui-pod
+      labels:
+        app: crawler
+        component: crawler-ui
+    spec:
+      containers:
+      - image: jakui/crawler_ui:latest
+        name: crawler-ui
