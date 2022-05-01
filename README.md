@@ -59,3 +59,16 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 
 Решил проблему с падением elasticsearch из-за нехватки памяти.
 
+### Kubernetes установка nginx ingress-controller
+
+1. Добавьте в Helm репозиторий для NGINX:
+
+    `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
+2. Обновите набор данных для создания экземпляра приложения в кластере Kubernetes:
+
+    `helm repo update`
+
+3. Установите контроллер в стандартной конфигурации:
+
+    `helm install ingress-nginx ingress-nginx/ingress-nginx`
