@@ -22,3 +22,6 @@ spec:
       containers:
       - image: jakui/crawler_ui:latest
         name: crawler-ui
+        env:
+        - name: crawler-ui_DATABASE_HOST
+          value: crawler-ui-db

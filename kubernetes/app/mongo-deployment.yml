@@ -6,6 +6,8 @@ metadata:
   labels:
     app: crawler
     component: mongo
+    search-engine-db: "true"
+    crawler-ui-db: "true"
 spec:
   replicas: 1
   selector:
@@ -18,13 +20,16 @@ spec:
       labels:
         app: crawler
         component: mongo
+        search-engine-db: "true"
+        crawler-ui-db: "true"
     spec:
       containers:
-      - image: mongo:latest
+      - image: mongo:3.2
         name: mongo
-        volumeMounts:
-        - name: mongo-persistent-storage
-          mountPath: /data/db
-      volumes:
-      - name: mongo-persistent-storage
-        emptyDir: {}
+      #   volumeMounts:
+      #   - name: mongo-persistent-storage
+      #     mountPath: /data/db
+      # volumes:
+      # - name: mongo-persistent-storage
+      #   persistentVolumeClaim:
+      #     claimName:  mongo-pvc
