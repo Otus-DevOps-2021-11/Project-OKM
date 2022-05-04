@@ -98,3 +98,19 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
   * `kubectl apply -f rabbitmq_service_ext.yaml -n dev`
   * `kubectl apply -f rabbitmq_configmap.yaml -n dev`
   * `kubectl apply -f rabbitmq_statefulset.yaml -n dev`
+
+## Мониторинг
+
+Добавлен стек мониторинга - Prometheus+Alertmanager+Graphana
+
+Запилил compose docker-monitoring.yml
+
+Порешал проблему с сетями докера т.к докер создает сеть согласно папке+название сети. Покурил мануал, принудил docker к сотрудничеству.
+
+Сделал правило отправки alert при падении сервиса ( если up одного из endpoint == 0)
+
+Запилил канал в Slack ( monitoring-okma) и пригласил всех участников.
+
+Проверил что алерт при падении сервиса приходит.
+
+Todo - Возможно нам нужно оповещение еще и по почте.
