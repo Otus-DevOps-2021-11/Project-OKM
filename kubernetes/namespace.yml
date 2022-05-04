@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+# helm install rabbitmq bitnami/rabbitmq --set persistence.existingClaim='rabbitmq-data', auth.username='rabbitmq', auth.password='rabbitmq', auth.erlangCookie=erlangCookiesecretcookie -n dev
+# helm install rabbitmq bitnami/rabbitmq --set persistence.existingClaim='rabbitmq-data' -n dev
+# # kubectl port-forward --namespace default svc/rabbitmq 15672:15672
