@@ -59,7 +59,9 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 
 Решил проблему с падением elasticsearch из-за нехватки памяти.
 
-### Kubernetes установка nginx ingress-controller
+## Kubernetes
+
+### Установка nginx ingress-controller
 
 1. Добавьте в Helm репозиторий для NGINX:
 
@@ -72,3 +74,22 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 3. Установите контроллер в стандартной конфигурации:
 
     `helm install ingress-nginx ingress-nginx/ingress-nginx`
+
+### Deploy Rabbitmq
+
+1. Перейдите в каталог `kubernetes`
+
+2. Выполните команду `kubectl apply -f namespace.yml`
+
+3. Перейдите в каталог `kubernetes\rmq`
+
+4. Последовательно выполните команды
+
+4.1 `kubectl apply -f namespace.yml`
+4.2 `kubectl apply -f rabbitmq_rbac.yaml -n dev`
+4.3 `kubectl apply -f rabbitmq_pv.yaml -n dev`
+4.4 `kubectl apply -f rabbitmq_pvc.yaml -n dev`
+4.5 `kubectl apply -f rabbitmq_service.yaml -n dev`
+4.6 `kubectl apply -f rabbitmq_service_ext.yaml -n dev`
+4.7 `kubectl apply -f rabbitmq_configmap.yaml -n dev`
+4.8 `kubectl apply -f rabbitmq_statefulset.yaml -n dev`
