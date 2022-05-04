@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-engine
+  labels:
+    app: crawler
+    component: search-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+      component: search-engine
+  template:
+    metadata:
+      name: search-engine-pod
+      labels:
+        app: crawler
+        component: search-engine
+    spec:
+      containers:
+      - image: 4utep/crawler:latest
+        name: search-engine
+        env:
+        - name: search-engine_DATABASE_HOST
+          value: search-engine-db

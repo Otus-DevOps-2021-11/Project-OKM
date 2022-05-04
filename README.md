@@ -59,6 +59,48 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 
 Решил проблему с падением elasticsearch из-за нехватки памяти.
 
+## Kubernetes
+
+### Установка nginx ingress-controller
+
+1. Добавьте в Helm репозиторий для NGINX:
+
+    `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
+2. Обновите набор данных для создания экземпляра приложения в кластере Kubernetes:
+
+    `helm repo update`
+
+3. Установите контроллер в стандартной конфигурации:
+
+    `helm install ingress-nginx ingress-nginx/ingress-nginx`
+
+### Deploy Rabbitmq
+
+**Важно!** В случае, если в файле `docker/search_crawler/Dockerfile` в качестве значения переменных `ENV RMQ_USERNAME`,
+`ENV RMQ_PASSWORD` не используется`rabbitmq` - в файле `kubernetes/rmq/rabbitmq_statefulset.yaml` в разделе `env`
+(ориентировочно строки 83 - 86) нужно заменить значения переменных `RABBITMQ_DEFAULT_USER` и `RABBITMQ_DEFAULT_PASS` на
+значения этих переменных из файла `docker/search_crawler/Dockerfile`.
+
+1. Перейдите в каталог `kubernetes`
+
+2. Выполните команду `kubectl apply -f namespace.yml`
+
+3. Перейдите в каталог `kubernetes\rmq`
+
+4. Последовательно выполните команды
+
+  * `kubectl apply -f namespace.yml`
+  * `kubectl apply -f rabbitmq_rbac.yaml -n dev`
+  * `kubectl apply -f rabbitmq_pv.yaml -n dev`
+  * `kubectl apply -f rabbitmq_pvc.yaml -n dev`
+  * `kubectl apply -f rabbitmq_service.yaml -n dev`
+  * `kubectl apply -f rabbitmq_service_ext.yaml -n dev`
+  * `kubectl apply -f rabbitmq_configmap.yaml -n dev`
+  * `kubectl apply -f rabbitmq_statefulset.yaml -n dev`
+
+## Мониторинг
+
 Добавлен стек мониторинга - Prometheus+Alertmanager+Graphana
 
 Запилил compose docker-monitoring.yml
@@ -72,6 +114,3 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 Проверил что алерт при падении сервиса приходит.
 
 Todo - Возможно нам нужно оповещение еще и по почте.
-
-
-
