@@ -77,6 +77,11 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
 
 ### Deploy Rabbitmq
 
+**Важно!** В случае, если в файле `docker/search_crawler/Dockerfile` в качестве значения переменных `ENV RMQ_USERNAME`,
+`ENV RMQ_PASSWORD` не используется`rabbitmq` - в файле `kubernetes/rmq/rabbitmq_statefulset.yaml` в разделе `env`
+(ориентировочно строки 83 - 86) нужно заменить значения переменных `RABBITMQ_DEFAULT_USER` и `RABBITMQ_DEFAULT_PASS` на
+значения этих переменных из файла `docker/search_crawler/Dockerfile`.
+
 1. Перейдите в каталог `kubernetes`
 
 2. Выполните команду `kubectl apply -f namespace.yml`
