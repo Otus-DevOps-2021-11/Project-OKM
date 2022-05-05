@@ -1,10 +1,9 @@
-#создаем диск для хранения БД, нужно переписать в терраформ...
-yc compute disk create k8s --size 4 --description "disk for okmadb"
-
-#узнать ID можно командой
+#ID диска для БД выводится output'ом при запуске терраформа 
+#Но если забыли - узнать ID диска для БД можно командой
 yc compute disk list
 
 #указываем ID в mongo-volume.yml и затем запускаем следующие команды
+# ну или становимся на папку выше и запускаем kubectl apply -f ./app
 kubectl apply -f mongo-volume.yml -n dev
 kubectl apply -f mongo-claim.yml -n dev
 kubectl apply -f mongo-deployment.yml -n dev
