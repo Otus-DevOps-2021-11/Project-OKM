@@ -97,21 +97,29 @@
 4. Последовательно запустите следующие команды:
 
   `kubectl apply -f mongo-volume.yml -n dev`
+
   `kubectl apply -f mongo-claim.yml -n dev`
+
   `kubectl apply -f mongo-deployment.yml -n dev`
+
   `kubectl apply -f mongodb-service.yml -n dev`
-  `
+
   `kubectl apply -f crawler-ui-deployment.yml -n dev`
+
   `kubectl apply -f crawler-ui-service.yml -n dev`
+
   `kubectl apply -f crawler-ui-mongodb-service.yml -n dev`
+
   `
   `kubectl apply -f crawler1-deployment.yml -n dev`
+
   `kubectl apply -f crawler1-mongodb-service.yml -n dev`
+
 
 ## Мониторинг
 #### Используемый стек:
 
-Prometheus+Alertmanager+Graphana
+**Prometheus+Alertmanager+Graphana**
 
 #### Docker images
 Решены проблемы с совместимостью плагина для `fluentd` и версии `elasticsearch`. Решили проблему с падением
