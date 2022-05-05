@@ -92,7 +92,7 @@
 
 2. Командой `yc compute disk list` получаем ID созданного диска
 
-3. Полученный ID нужно указать в файле `mongo-volume.yml`
+3. Полученный ID нужно указать в разделе `volumeHandle` файле `kubernetes/app/mongo-volume.yml`
 
 4. Последовательно запустите следующие команды:
 
