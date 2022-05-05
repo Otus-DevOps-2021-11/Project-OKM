@@ -94,7 +94,9 @@
 
 3. Полученный ID нужно указать в разделе `volumeHandle` файле `kubernetes/app/mongo-volume.yml`
 
-4. Последовательно запустите следующие команды:
+4. В терминале перейдите в каталог `kubernetes/app`
+
+5. Последовательно выполните следующие команды:
 
   `kubectl apply -f mongo-volume.yml -n dev`
 
