@@ -1,7 +1,7 @@
 # Project-OKMA
-## У нас есть план и мы будем его придерживаться:
+## У нас есть план и мы будем его придерживаться (этот пункт существует на время написания курсовой):
 
-1. Создать развертывание кубер-кластера на 2 ноды 4/8/64 в terraform
+1. Создать развертывание кубер-кластера на 2 ноды 4/8/64 в `terraform`
 2. Написать Докер-файлы для разворачивание приложения в докере
 3. Залить докер-образы в докер-хаб
 4. Написать деплойменты приложения в кубер-кластер
@@ -9,8 +9,8 @@
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml`
 
-6. Написать правило ingress для приложения
-7. Деплоим приложение и ingress
+6. Написать правило `ingress` для приложения
+7. Деплоим приложение и `ingress`
 8. Если приложение заработало (о чудо!!!) - описать его деплой ансиблом
 9. Запилить логгирование
 10. Запилить мониторинг и алерты
@@ -23,7 +23,7 @@
 
 ### Разворот managed k8s кластера
 
-Приложение развёрнуто в kubernetes кластере. Кластер состоит из двух нод, кластер создаётся через Terraform. Для
+    Приложение развёрнуто в kubernetes кластере. Кластер состоит из двух нод, кластер создаётся через Terraform. Для
 создания kubernetes-кластера нужно:
 
 1. Перейти в каталог `terraform`
@@ -36,28 +36,11 @@
 
 ### Docker образы
 
-Для работы приложения в dockerfil'ах изменили версию python на 3.9, также изменили зависимости приложения (файлы
-requirements.txt): обновили используемую версию flask до 2.0.3
-
-Запилил 2 образа crawler и crawler_ui соотвественно
-
-Запушил их в свою репу opopovich85/crawler и opopovich85/сrawler_ui
-
-crawler_ui не хватило requirements.txt добавил туда markupsafe
-
-Хотел запустить на более-менее свежем python-3.8-alpine,словил exception,откатился на версию 3.6
-
-На данный момент оба приложения хотят видеть монгу и кролика
-
-Починили crawler у которого была ошибка с множественными очередями
-
-Сейчас приложение полностью работает, можно начать развлекаться дальше
-
-Добавил fluentd,собрал образ opopovich85/fluentd:latest.Сделал зачатки compose для логирования.
-
-Допилил compose для логирования до конца. Решены проблемы с совместимостью плагина для fluentd и версии elasticsearch.
-
-Решил проблему с падением elasticsearch из-за нехватки памяти.
+Для работы приложения в `dockerfil'ах` изменили версию python на 3.9, также изменили зависимости приложения (файлы
+`requirements.txt`): обновили используемую версию `flask` до 2.0.3
+Для микросервисов `crawler` и `crawler_ui` были собраны Docker-образы, образы находятся в каталогах `search_crawler`
+и `search_crawler_ui` для `crawler` и `crawler_ui` соответственно. Образы добавили в репозиторий Docker-hub. Для работы 
+`crawler_ui` в `requirements.txt` добавили также библиотеку `markupsafe`.
 
 ## Kubernetes
 
@@ -99,18 +82,43 @@ crawler_ui не хватило requirements.txt добавил туда markupsa
   * `kubectl apply -f rabbitmq_configmap.yaml -n dev`
   * `kubectl apply -f rabbitmq_statefulset.yaml -n dev`
 
+### Деплой приложения в kubernetes-кластер
+
+**Пока работает не до конца!**
+
+1. Создайте диск для хранения БД, для этого выполните команду
+
+  `yc compute disk create k8s --size 4 --description "disk for okmadb"`,
+
+2. Командой `yc compute disk list` получаем ID созданного диска
+
+3. Полученный ID нужно указать в файле `mongo-volume.yml`
+
+4. Последовательно запустите следующие команды:
+
+  `kubectl apply -f mongo-volume.yml -n dev`
+  `kubectl apply -f mongo-claim.yml -n dev`
+  `kubectl apply -f mongo-deployment.yml -n dev`
+  `kubectl apply -f mongodb-service.yml -n dev`
+  `
+  `kubectl apply -f crawler-ui-deployment.yml -n dev`
+  `kubectl apply -f crawler-ui-service.yml -n dev`
+  `kubectl apply -f crawler-ui-mongodb-service.yml -n dev`
+  `
+  `kubectl apply -f crawler1-deployment.yml -n dev`
+  `kubectl apply -f crawler1-mongodb-service.yml -n dev`
+
 ## Мониторинг
+#### Используемый стек:
 
-Добавлен стек мониторинга - Prometheus+Alertmanager+Graphana
+Prometheus+Alertmanager+Graphana
 
-Запилил compose docker-monitoring.yml
+#### Docker images
+    Решены проблемы с совместимостью плагина для `fluentd` и версии `elasticsearch`. Решили проблему с падением
+`elasticsearch` из-за нехватки памяти. Для запуска мониторинга собран `docker-compose` в файле `docker-monitoring.yml`.
+<!-- Деплоймент для кубер кластера пока не готов -->
+#### Alerting
 
-Порешал проблему с сетями докера т.к докер создает сеть согласно папке+название сети. Покурил мануал, принудил docker к сотрудничеству.
-
-Сделал правило отправки alert при падении сервиса ( если up одного из endpoint == 0)
-
-Запилил канал в Slack ( monitoring-okma) и пригласил всех участников.
-
-Проверил что алерт при падении сервиса приходит.
-
-Todo - Возможно нам нужно оповещение еще и по почте.
+Создано правило отправки `alert'ов` при падении сервиса (если `up` одного из `endpoint == 0`). Для получения алертов
+создан канал `monitoring-okma` в Slack. В канал добавлены все участники проекта. Оповещение при падении сервиса
+приходит.
