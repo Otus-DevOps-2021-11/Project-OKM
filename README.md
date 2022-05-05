@@ -112,7 +112,6 @@
 
   `kubectl apply -f crawler-ui-mongodb-service.yml -n dev`
 
-  `
   `kubectl apply -f crawler1-deployment.yml -n dev`
 
   `kubectl apply -f crawler1-mongodb-service.yml -n dev`
