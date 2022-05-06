@@ -18,6 +18,3 @@ RUN chmod +x /wait
 
 ## Тут мы ожидаем (чего ожидаем указано в докеркомпоузе) и потом стартует приложение
 CMD /wait && python -u crawler.py "https://vitkhab.github.io/search_engine_test_site/"
-
-
-
