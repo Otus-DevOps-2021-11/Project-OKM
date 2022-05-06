@@ -39,10 +39,6 @@ services:
     ports:
       - 3000:3000
 
-
- 
-
-
 volumes:
   prometheus_data:
   grafana_data:
@@ -51,4 +47,3 @@ networks:
   docker_appnet:
     external:
      name: docker_appnet
-
