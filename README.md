@@ -36,11 +36,10 @@
 
 ### Docker образы
 
-Для работы приложения в `dockerfil'ах` изменили версию python на 3.9, также изменили зависимости приложения (файлы
-`requirements.txt`): обновили используемую версию `flask` до 2.0.3
-Для микросервисов `crawler` и `crawler_ui` были собраны Docker-образы, образы находятся в каталогах `search_crawler`
-и `search_crawler_ui` для `crawler` и `crawler_ui` соответственно. Образы добавили в репозиторий Docker-hub. Для работы 
-`crawler_ui` в `requirements.txt` добавили также библиотеку `markupsafe`.
+* Для работы приложения в `dockerfil'ах` изменили версию python на 3.9
+* изменили зависимости приложения (файлы`requirements.txt`): обновили используемую версию `flask` до 2.0.3
+* для микросервисов `crawler` и `crawler_ui` были собраны Docker-образы, образы находятся в каталогах `search_crawler`  и `search_crawler_ui` для    `crawler` и `crawler_ui` соответственно.
+* Образы добавили в репозиторий Docker-hub. Для работы `crawler_ui` в `requirements.txt` добавили также библиотеку `markupsafe`.
 
 ## Kubernetes
 
