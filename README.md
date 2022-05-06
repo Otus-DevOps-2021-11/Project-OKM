@@ -114,6 +114,8 @@
 
   `kubectl apply -f crawler1-mongodb-service.yml -n dev`
 
+  `kubectl apply -f crawler1-rabbitmq-service.yml -n dev`
+
 
 ## Мониторинг
 #### Используемый стек:

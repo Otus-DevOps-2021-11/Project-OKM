@@ -6,7 +6,8 @@ WORKDIR /run/crawlerapp
 ENV CRAWLERAPP=crawler.py
 ENV MONGO mongo
 ENV MONGO_PORT 27017
-ENV RMQ_HOST rabbit
+ENV RMQ_HOST rabbitmq-internal
+ENV RMQ_PORT 5672
 ENV RMQ_QUEUE urls
 ENV RMQ_USERNAME rabbitmq
 ENV RMQ_PASSWORD rabbitmq
@@ -18,6 +19,3 @@ RUN chmod +x /wait
 
 ## Тут мы ожидаем (чего ожидаем указано в докеркомпоузе) и потом стартует приложение
 CMD /wait && python -u crawler.py "https://vitkhab.github.io/search_engine_test_site/"
-
-
-
