@@ -84,6 +84,8 @@ spec:
             value: "rabbitmq"
           - name: RABBITMQ_DEFAULT_PASS
             value: "rabbitmq"
+          - name: RABBITMQ_DEFAULT_VHOST
+            value: "rabbit"
       volumes:
         - name: config-volume
           configMap:
