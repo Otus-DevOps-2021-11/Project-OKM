@@ -6,7 +6,8 @@ WORKDIR /run/crawlerapp
 ENV CRAWLERAPP=crawler.py
 ENV MONGO mongo
 ENV MONGO_PORT 27017
-ENV RMQ_HOST rabbit
+ENV RMQ_HOST rabbitmq-internal
+ENV RMQ_PORT 5672
 ENV RMQ_QUEUE urls
 ENV RMQ_USERNAME rabbitmq
 ENV RMQ_PASSWORD rabbitmq
