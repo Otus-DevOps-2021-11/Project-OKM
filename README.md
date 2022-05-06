@@ -72,7 +72,6 @@
 
 4. Последовательно выполните команды
 
-  * `kubectl apply -f namespace.yml`
   * `kubectl apply -f rabbitmq_rbac.yaml -n dev`
   * `kubectl apply -f rabbitmq_pv.yaml -n dev`
   * `kubectl apply -f rabbitmq_pvc.yaml -n dev`
