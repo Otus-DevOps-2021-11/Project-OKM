@@ -39,11 +39,14 @@ def connect_db():
 
 def connect_to_mq():
     try:
-        credentials = PlainCredentials(mquser, mqpass)
+        credentials = PlainCredentials(mquser, mqpass, port)
+        log.info(mquser)
+        log.info(mqpass)
         rabbit = BlockingConnection(ConnectionParameters(
             host=mqhost,
             connection_attempts=10,
             retry_delay=1,
+            port=port,
             credentials=credentials))
     except Exception as e:
         log.error('connect_to_MQ',
@@ -76,9 +79,10 @@ CHECK_INTERVAL = int(getenv('CHECK_INTERVAL', -1))
 
 exclude_urls = list(filter(None, getenv('EXCLUDE_URLS', '').split(',')))
 
-mqhost = getenv('RMQ_HOST', 'rabbit')
+mqhost = getenv('RMQ_HOST', 'rabbitmq-internal')
 mqqueue = getenv('RMQ_QUEUE', 'urls')
-
+port = getenv('RMQ_PORT', 5672)
+ 
 mquser = getenv('RMQ_USERNAME', 'guest')
 mqpass = getenv('RMQ_PASSWORD', 'guest')
 
