@@ -9,9 +9,11 @@ metadata:
     search-engine-rmq: "true"
 spec:
   ports:
-  - port: 27017
-    protocol: TCP
-    targetPort: 27017
+  - name: "rabbitmq"
+    protocol: "TCP"
+    port: 5672
+    targetPort: 5672
+    nodePort: 0
   selector:
     app: crawler
     component: rabbit
