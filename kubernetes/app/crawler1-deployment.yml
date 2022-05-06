@@ -20,8 +20,14 @@ spec:
         component: search-engine
     spec:
       containers:
-      - image: 4utep/crawler:latest
+      - image: jakui/crawler:latest
         name: search-engine
         env:
         - name: search-engine_DATABASE_HOST
           value: search-engine-db
+        - name: RABBITMQ_ERLANG_COOKIE
+          value: "mycookie"
+        - name: RABBITMQ_DEFAULT_USER
+          value: "rabbitmq"
+        - name: RABBITMQ_DEFAULT_PASS
+          value: "rabbitmq"
