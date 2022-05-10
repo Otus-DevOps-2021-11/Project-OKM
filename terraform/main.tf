@@ -47,3 +47,10 @@ resource "yandex_kubernetes_cluster" "zonal_cluster_resource_name" {
   network_policy_provider = "CALICO"
 
 }
+
+resource "yandex_compute_disk" "disk-for-mongodb" {
+
+  name = "mongodb-disk"
+  size = "10"
+  description = "disk for mongodb"
+}
