@@ -132,7 +132,7 @@
  
  `helm repo update`
  
- `helm install --set name=dev monitoring prometheus-community/kube-prometheus-stack -f monitoring/kube-prometheus-stack.yml`
+`helm install --set name=dev monitoring prometheus-community/kube-prometheus-stack -f monitoring/kube-prometheus-stack.yml`
  
  * На данный момент в файле kube-prometheus-stack.yml настройки ingress для alertmanager и prometheus закомментированы
 <!-- Деплоймент для кубер кластера пока не готов -->
