@@ -54,3 +54,10 @@ resource "yandex_compute_disk" "disk-for-mongodb" {
   size = "10"
   description = "disk for mongodb"
 }
+
+resource "yandex_compute_disk" "disk-for-rabbit" {
+
+  name = "rabbit-disk"
+  size = "10"
+  description = "disk for rabbit"
+}

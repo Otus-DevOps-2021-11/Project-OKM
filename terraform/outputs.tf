@@ -5,3 +5,7 @@ output "k8s_cluster_id" {
 output "disk_for_mongodb_id" {
  value = yandex_compute_disk.disk-for-mongodb.id
 }
+
+output "disk_for_rabbit_id" {
+ value = yandex_compute_disk.disk-for-rabbit.id
+}

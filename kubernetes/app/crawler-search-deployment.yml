@@ -23,8 +23,8 @@ spec:
       - image: jakui/crawler:latest
         name: search-engine
         env:
-        - name: search-engine_DATABASE_HOST
-          value: search-engine-db
+        - name: MONGO
+          value: "mongo"
         - name: RABBITMQ_ERLANG_COOKIE
           value: "mycookie"
         - name: RABBITMQ_DEFAULT_USER

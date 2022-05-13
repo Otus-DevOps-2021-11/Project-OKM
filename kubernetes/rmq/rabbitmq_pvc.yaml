@@ -1,15 +1,30 @@
-kind: PersistentVolumeClaim
+---
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
   name: rabbitmq-data
 spec:
-  storageClassName: rabbitmq-data-sigma
+  storageClassName: yc-network-hdd
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
-  # csi:
-  #   driver: disk-csi-driver.mks.ycloud.io
-  #   fsType: ext4
-  #   volumeHandle: epdaiom40681u701lrji
+      storage: 8Gi
+  volumeName: rabbitmq-data-sigma
+
+
+# kind: PersistentVolumeClaim
+# apiVersion: v1
+# metadata:
+#   name: rabbitmq-data
+# spec:
+#   storageClassName: rabbitmq-data-sigma
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   csi:
+#     driver: disk-csi-driver.mks.ycloud.io
+#     fsType: ext4
+#     volumeHandle: fhm92mh9bnsapn36tmig
