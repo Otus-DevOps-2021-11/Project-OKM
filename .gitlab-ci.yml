@@ -67,9 +67,8 @@ deploy_mongo_job:
   stage: deploy
   script:    
     - echo 'Deploy MONGO'
-    - kubectl apply -f kubernetes/app/mongo-volume.yml -n dev
-    - kubectl apply -f kubernetes/app/mongo-claim.yml -n dev
-    - kubectl apply -f kubernetes/app/mongo-deployment.yml -n dev
+    - kubectl apply -f kubernetes/app/ -n dev
+
   environment:
     name: dev
     url: http://dev.example.com
