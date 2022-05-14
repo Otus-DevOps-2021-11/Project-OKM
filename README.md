@@ -142,3 +142,21 @@
   * Создано правило отправки `alert'ов` при падении сервиса (если `up` одного из `endpoint == 0`)
   * для получения алертов создан канал `monitoring-okma` в Slack. В канал добавлены все участники проекта
   * Оповещение при падении сервиса приходит.
+
+
+#### Gitlab-CI
+Непрерывное развертывание контейнеризованных приложений с помощью GitLab в Яндексе:
+https://cloud.yandex.ru/docs/tutorials/infrastructure-management/gitlab-containers
+
+`helm repo add gitlab-ci https://charts.gitlab.io`
+Установить раннер в кубер:
+`helm install --namespace default gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner`
+Убедитесь, что под GitLab Runner перешел в состояние Running:
+
+    kubectl get pods -n default | grep gitlab-runner
+    gitlab-runner-gitlab-runner-6d5f667499-l4jtg   1/1     Running   0          64s
+
+
+
+
+
