@@ -11,7 +11,7 @@ variables:
 
 before_script:
  - ls
- - mkdir ~/.kube && cp config ~/.kube/config
+# - mkdir ~/.kube && cp config ~/.kube/config
  - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
  - chmod +x ./kubectl
  - mv ./kubectl /usr/local/bin/kubectl
@@ -54,7 +54,6 @@ deploy_dev_job:
   stage: deploy
   script:
     - echo 'Deploy Rabbitmq'
-    - kubectl apply -f kubernetes/namespace.yml
     - kubectl apply -f rabbitmq_rbac.yaml -n dev
     - kubectl apply -f rabbitmq_pv.yaml -n dev
     - kubectl apply -f rabbitmq_pvc.yaml -n dev
