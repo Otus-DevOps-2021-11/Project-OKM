@@ -52,7 +52,7 @@ branch review:
     - master
 
 
-deploy_dev_job:
+deploy_rabbit_job:
   stage: deploy
   script:
     - echo 'Deploy Rabbitmq'
@@ -63,7 +63,7 @@ deploy_dev_job:
     - kubectl apply -f kubernetes/rmq/rabbitmq_service_ext.yaml -n dev
     - kubectl apply -f kubernetes/rmq/rabbitmq_configmap.yaml -n dev
     - kubectl apply -f kubernetes/rmq/rabbitmq_statefulset.yaml -n dev
-deploy_dev_job:
+deploy_mongo_job:
   stage: deploy
   script:    
     - echo 'Deploy MONGO'
