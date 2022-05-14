@@ -16,10 +16,11 @@ before_script:
  - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
  - chmod +x ./kubectl
  - mv ./kubectl /usr/local/bin/kubectl
- - kubectl version --client
+ - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
+ - kubectl config set-credentials admin --token="$KUBE_TOKEN"
+ - kubectl config set-context default --cluster=k8s --user=admin
+ - kubectl config use-context default
  - kubectl get po
-
-
 
 
 build_job:
