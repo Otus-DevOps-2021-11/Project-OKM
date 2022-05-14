@@ -2,7 +2,7 @@ image: ruby:2.4.2
 
 stages:
   - build
-  - test
+ # - test
   - review
   - deploy
 
@@ -16,7 +16,7 @@ before_script:
  - mv ./kubectl /usr/local/bin/kubectl
  - kubectl version --client
  - kubectl get po
- 
+
 
 
 
@@ -25,15 +25,15 @@ build_job:
   script:
     - echo 'Building'
 
-test_unit_job:
-  stage: test
-  script:
-    - echo 'Testing'
+#test_unit_job:
+#  stage: test
+#  script:
+#    - echo 'Testing'
 
-test_integration_job:
-  stage: test
-  script:
-    - echo 'Testing 2'
+#test_integration_job:
+#  stage: test
+#  script:
+#    - echo 'Testing 2'
 
 
 
