@@ -20,8 +20,9 @@ before_script:
  - kubectl config set-credentials admin --token="$KUBE_TOKEN"
  - kubectl config set-context default --cluster=kubernetes --user=admin
  - kubectl config use-context default
- - kubectl config get-contexts
- - kubectl config get-users
+ - sed -i "s/__VERSION__/gitlab-$CI_COMMIT_SHORT_SHA/" k8s.yaml
+ - kubectl apply -f k8s.yaml
+
 
 
 build_job:
