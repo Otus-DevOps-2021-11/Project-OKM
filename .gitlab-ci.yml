@@ -20,8 +20,8 @@ before_script:
  - kubectl config set-credentials admin --token="$KUBE_TOKEN"
  - kubectl config set-context default --cluster=kubernetes --user=admin
  - kubectl config use-context default
- - kubectl get contexts
- - kubectl get users
+ - kubectl config get-contexts
+ - kubectl config get-users
 
 
 build_job:
