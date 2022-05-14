@@ -56,14 +56,9 @@ deploy_dev_job:
   stage: deploy
   script:
     - echo 'Deploy Rabbitmq'
-    - kubectl config use-context default
-    - kubectl apply -f kubernetes/rmq/rabbitmq_rbac.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_pv.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_pvc.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_service.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_service_ext.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_configmap.yaml -n dev
-    - kubectl apply -f kubernetes/rmq/rabbitmq_statefulset.yaml -n dev
+    - kubectl apply -f kubernetes/app/mongo-volume.yml -n dev`
+    - kubectl apply -f mongo-claim.yml -n dev`
+    - kubectl apply -f mongo-deployment.yml -n dev`
   environment:
     name: dev
     url: http://dev.example.com
