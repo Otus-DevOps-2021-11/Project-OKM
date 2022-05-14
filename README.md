@@ -157,6 +157,9 @@ https://cloud.yandex.ru/docs/tutorials/infrastructure-management/gitlab-containe
     gitlab-runner-gitlab-runner-6d5f667499-l4jtg   1/1     Running   0          64s
 
 
+#### Подключаемся к яндексу OKMA
+yc config profile create okma
+yc init
 
 
 
