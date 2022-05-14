@@ -50,14 +50,14 @@ resource "yandex_kubernetes_cluster" "zonal_cluster_resource_name" {
 
 resource "yandex_compute_disk" "disk-for-mongodb" {
 
-  name = "mongodb-disk"
-  size = "10"
+  name        = "mongodb-disk"
+  size        = "10"
   description = "disk for mongodb"
 }
 
 resource "yandex_compute_disk" "disk-for-rabbit" {
 
-  name = "rabbit-disk"
-  size = "10"
+  name        = "rabbit-disk"
+  size        = "10"
   description = "disk for rabbit"
 }
