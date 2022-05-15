@@ -2492,7 +2492,7 @@ prometheus:
     additionalScrapeConfigs:
     - job_name: "crawler_ui"
       static_configs:
-      - targets: ["crawler_ui:8000"]
+      - targets: ["crawler-ui-srvs:8000"]
     - job_name: "crawler"
       static_configs:
       - targets: ["crawler:8000"]
