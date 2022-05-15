@@ -24,7 +24,7 @@ spec:
         name: search-engine
         env:
         - name: MONGO
-          value: search_engine_db
+          value: mongo
         - name: MONGO_PORT
           value: "27017"
         - name: RABBITMQ_ERLANG_COOKIE
