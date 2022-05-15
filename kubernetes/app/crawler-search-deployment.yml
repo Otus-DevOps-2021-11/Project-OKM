@@ -25,6 +25,8 @@ spec:
         env:
         - name: MONGO
           value: search_engine_db
+        - name: MONGO_PORT
+          value: "27017"
         - name: RABBITMQ_ERLANG_COOKIE
           value: "mycookie"
         - name: RABBITMQ_DEFAULT_USER
