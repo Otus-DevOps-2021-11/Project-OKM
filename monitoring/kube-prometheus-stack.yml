@@ -2495,7 +2495,7 @@ prometheus:
       - targets: ["crawler-ui-srvs:8000"]
     - job_name: "crawler"
       static_configs:
-      - targets: ["crawler:8000"]
+      - targets: ["crawler-srvs:8000"]
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
