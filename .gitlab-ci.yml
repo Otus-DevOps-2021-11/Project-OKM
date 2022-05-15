@@ -2,15 +2,25 @@ image: ruby:2.4.2
 
 stages:
   - build
-  - test
+ # - test
   - review
   - deploy
 
 variables:
   DATABASE_URL: 'mongodb://mongo/user_posts'
+  
 
 before_script:
  - ls
+# - mkdir ~/.kube && cp config ~/.kube/config
+ - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+ - chmod +x ./kubectl
+ - mv ./kubectl /usr/local/bin/kubectl
+ - kubectl config set-cluster kubernetes --server="$KUBE_URL" --insecure-skip-tls-verify=true
+ - kubectl config set-credentials admin --token="$KUBE_TOKEN"
+ - kubectl config set-context default --cluster=kubernetes --user=admin
+ - kubectl config use-context default
+
 
 
 build_job:
@@ -18,23 +28,17 @@ build_job:
   script:
     - echo 'Building'
 
-test_unit_job:
-  stage: test
-  script:
-    - echo 'Testing'
+#test_unit_job:
+#  stage: test
+#  script:
+#    - echo 'Testing'
 
-test_integration_job:
-  stage: test
-  script:
-    - echo 'Testing 2'
+#test_integration_job:
+#  stage: test
+#  script:
+#    - echo 'Testing 2'
 
-deploy_dev_job:
-  stage: deploy
-  script:
-    - echo 'Deploy'
-  environment:
-    name: dev
-    url: http://dev.example.com
+
 
 branch review:
   stage: review
@@ -43,9 +47,32 @@ branch review:
     name: branch/$CI_COMMIT_REF_NAME
     url: http://$CI_ENVIRONMENT_SLUG.example.com
   only:
-    - main
+    - gitlab-ci
   except:
     - master
+
+
+deploy_rabbit_job:
+  stage: deploy
+  script:
+    - echo 'Deploy Rabbitmq'
+    - kubectl apply -f kubernetes/rmq/rabbitmq_rbac.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_pv.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_pvc.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_service.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_service_ext.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_configmap.yaml -n dev
+    - kubectl apply -f kubernetes/rmq/rabbitmq_statefulset.yaml -n dev
+deploy_mongo_job:
+  stage: deploy
+  script:    
+    - echo 'Deploy MONGO'
+    - kubectl apply -f kubernetes/app/ -n dev
+
+  environment:
+    name: dev
+    url: http://dev.example.com
+
 
 
 
