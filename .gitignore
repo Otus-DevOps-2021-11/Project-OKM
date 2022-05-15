@@ -8,3 +8,6 @@
 .terraform.tfstate.*
 *.tfvars
 **/.DS_Store
+gitlab-values.yaml
+config
+
