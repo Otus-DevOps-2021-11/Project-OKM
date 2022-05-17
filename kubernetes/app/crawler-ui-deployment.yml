@@ -27,5 +27,9 @@ spec:
       - image: jakui/crawler_ui:latest
         name: crawler-ui
         env:
-        - name: crawler-ui_DATABASE_HOST
-          value: crawler-ui-db
+        - name: MONGO
+          value: mongo
+        - name: MONGO_PORT
+          value: "27017"
+#        - name: crawler-ui_DATABASE_HOST
+#          value: crawler-ui-db
