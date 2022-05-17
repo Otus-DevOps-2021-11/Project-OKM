@@ -8,7 +8,7 @@ metadata:
 spec:
   rules:
   - host: "rabbit.maxx.su"
-    http:
+  - http:
       paths:
       - path: /*
         pathType: Prefix
