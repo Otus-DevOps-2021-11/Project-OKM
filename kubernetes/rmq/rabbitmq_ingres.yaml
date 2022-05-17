@@ -16,7 +16,7 @@ spec:
           service:
             name: rabbitmq
             port:
-              number: 9292
+              number: 15672
   
 
 
