@@ -18,6 +18,10 @@ spec:
       labels:
         app: crawler
         component: crawler-ui
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "pythonapp"
+        dapr.io/log-as-json: "true"
     spec:
       containers:
       - image: jakui/crawler_ui:latest
