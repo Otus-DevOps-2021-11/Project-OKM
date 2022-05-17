@@ -7,10 +7,10 @@ metadata:
     kubernetes.io/ingress.allow-http: "true" # Разрешаем проброс HTTP
 spec:
   rules:
-#  - host: "rabbit.maxx.su"
+  - host: "rabbit.maxx.su"
   - http:
       paths:
-      - path: /*
+      - path: /
         pathType: Prefix
         backend:
           service:
