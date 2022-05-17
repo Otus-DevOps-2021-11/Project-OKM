@@ -64,6 +64,13 @@ deploy_mongo_job:
     - echo 'Deploy MONGO'
     - kubectl apply -f kubernetes/app/ -n dev
 
+deploy_elk_job:
+  stage: deploy
+  when: manual
+  script:    
+    - echo 'Deploy Elastic'
+    - kubectl apply -f kubernetes/logger/ -n dev
+
   environment:
     name: dev
     url: http://dev.example.com

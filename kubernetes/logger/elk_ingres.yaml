@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elasticsearch
+  annotations:
+    kubernetes.io/ingress.allow-http: "true" # Разрешаем проброс HTTP
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "elastic.maxx.su"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: elasticsearch
+            port:
+              number: 9200
+  
+
+
+
+
+
+
+
