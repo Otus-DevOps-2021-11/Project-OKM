@@ -195,3 +195,11 @@ KHi6zSOJyiwrD3k5TrfYAptQy8laYeIk0qeS
 -----END CERTIFICATE-----
 
 
+#### Ingress
+У нас теперь всё что надо доступно по доменным именам:
+1. http://crawler.maxx.su
+2. http://rabbit.maxx.su
+3. http://alertmanager.maxx.su
+4. http://prometheus.maxx.su
+
+
