@@ -201,5 +201,6 @@ KHi6zSOJyiwrD3k5TrfYAptQy8laYeIk0qeS
 2. http://rabbit.maxx.su
 3. http://alertmanager.maxx.su
 4. http://prometheus.maxx.su
+5. http://elastic.maxx.su - в процессе
 
 
