@@ -6,6 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.allow-http: "true" # Разрешаем проброс HTTP
 spec:
+  ingressClassName: nginx
   rules:
   - host: "rabbit.maxx.su"
     http:
