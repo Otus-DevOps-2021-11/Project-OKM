@@ -2,21 +2,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: rabbitmq
+  name: crawler-ui-srvs
   annotations:
     kubernetes.io/ingress.allow-http: "true" # Разрешаем проброс HTTP
 spec:
   rules:
-  - host: "rabbit.maxx.su"
+  - host: "crawler.maxx.su"
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: rabbitmq
+            name: crawler-ui-srvs
             port:
-              number: 15672
+              number: 8000
   
 
 
