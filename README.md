@@ -172,6 +172,14 @@ yc init
 5. http://kibana.maxx.su
 
 
+#### Loki\Grafana
+kubectl create ns monitoring
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+helm upgrade --install loki --namespace=monitoring grafana/loki-stack
+helm upgrade --install grafana --namespace=monitoring grafana/grafana
+kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+kubectl apply -f kubernetes/grafana/grafana_ingres.yaml -n monitoring --force
 
 
 
