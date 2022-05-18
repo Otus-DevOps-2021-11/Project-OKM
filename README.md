@@ -146,41 +146,33 @@
 
 #### Gitlab-CI
 Непрерывное развертывание контейнеризованных приложений с помощью GitLab в Яндексе:
-https://cloud.yandex.ru/docs/tutorials/infrastructure-management/gitlab-containers
+
+`https://cloud.yandex.ru/docs/tutorials/infrastructure-management/gitlab-containers`
 
 `helm repo add gitlab-ci https://charts.gitlab.io`
 Установить раннер в кубер:
 `helm install --namespace default gitlab-runner -f gitlab-values.yaml gitlab/gitlab-runner`
 Убедитесь, что под GitLab Runner перешел в состояние Running:
 
-    kubectl get pods -n default | grep gitlab-runner
-    gitlab-runner-gitlab-runner-6d5f667499-l4jtg   1/1     Running   0          64s
+`kubectl get pods -n default | grep gitlab-runner`
+`gitlab-runner-gitlab-runner-6d5f667499-l4jtg   1/1     Running   0  64s`
 
 
-#### Подключаемся к яндексу OKMA
-yc config profile create okma
-yc init
-
+#### Деплоим Loki\Grafana
+Для установки выполните команды:
+1. `kubectl create ns monitoring`
+2. `helm repo add grafana https://grafana.github.io/helm-charts`
+3. `helm repo update`
+4. `helm upgrade --install loki --namespace=monitoring grafana/loki-stack`
+5. `helm upgrade --install grafana --namespace=monitoring grafana/grafana`
+6. `kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo`
+7. `kubectl apply -f kubernetes/grafana/grafana_ingres.yaml -n monitoring --force`
 
 #### Ingress
-У нас теперь всё что надо доступно по доменным именам:
-0. https://gitlab.maxx.su/otus/project-okma
-1. http://crawler.maxx.su
-2. http://rabbit.maxx.su
-3. http://alertmanager.maxx.su
-4. http://prometheus.maxx.su
-5. http://kibana.maxx.su - ниасилили
-6. http://grafana.maxx.su
-
-
-#### Loki\Grafana
-kubectl create ns monitoring
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update
-helm upgrade --install loki --namespace=monitoring grafana/loki-stack
-helm upgrade --install grafana --namespace=monitoring grafana/grafana
-kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-kubectl apply -f kubernetes/grafana/grafana_ingres.yaml -n monitoring --force
-
-
-
+Для доступа к сервисам используйте следующие адреса:
+0. `https://gitlab.maxx.su/otus/project-okma` - репозиторий проекта
+1. `http://crawler.maxx.su` - приложение
+2. `http://rabbit.maxx.su` - rabbitmq
+3. `http://alertmanager.maxx.su` - alertmanager
+4. `http://prometheus.maxx.su` - prometheus
+5. `http://grafana.maxx.su` - grafana (здесь собраны логи и метрики)
