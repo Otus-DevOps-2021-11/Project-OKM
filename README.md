@@ -169,7 +169,8 @@ yc init
 2. http://rabbit.maxx.su
 3. http://alertmanager.maxx.su
 4. http://prometheus.maxx.su
-5. http://kibana.maxx.su
+5. http://kibana.maxx.su - ниасилили
+6. http://grafana.maxx.su
 
 
 #### Loki\Grafana
