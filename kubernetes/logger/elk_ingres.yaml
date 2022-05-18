@@ -2,22 +2,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: elasticsearch
+  name: kibana-kibana
   annotations:
     kubernetes.io/ingress.allow-http: "true" # Разрешаем проброс HTTP
 spec:
   ingressClassName: nginx
   rules:
-  - host: "elastic.maxx.su"
+  - host: "kibana.maxx.su"
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: elasticsearch
+            name: kibana-kibana
             port:
-              number: 9200
+              number: 5601
   
 
 
