@@ -166,6 +166,7 @@
 
 #### Ingress
 Для доступа к сервисам используйте следующие адреса:
+
 0. `https://gitlab.maxx.su/otus/project-okma` - репозиторий проекта
 1. `http://crawler.maxx.su` - приложение
 2. `http://rabbit.maxx.su` - rabbitmq
