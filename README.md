@@ -43,18 +43,10 @@
 ## Kubernetes
 
 ### Установка nginx ingress-controller
+Выполните команду
 
-1. Добавьте в Helm репозиторий для NGINX:
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml`
 
-    `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
-
-2. Обновите набор данных для создания экземпляра приложения в кластере Kubernetes:
-
-    `helm repo update`
-
-3. Установите контроллер в стандартной конфигурации:
-
-    `helm install ingress-nginx ingress-nginx/ingress-nginx`
 
 ### Deploy Rabbitmq
 
@@ -80,8 +72,6 @@
   * `kubectl apply -f rabbitmq_statefulset.yaml -n dev`
 
 ### Деплой приложения в kubernetes-кластер
-
-**Пока работает не до конца!**
 
 1. Создайте диск для хранения БД, для этого выполните команду
 
@@ -119,7 +109,7 @@
 ## Мониторинг
 #### Используемый стек:
 
-**Prometheus+Alertmanager+Graphana**
+**Prometheus+Alertmanager**
 
 #### Docker images
  * Решены проблемы с совместимостью плагина для `fluentd` и версии `elasticsearch`
