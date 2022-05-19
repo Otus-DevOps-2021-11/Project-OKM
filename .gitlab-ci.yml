@@ -52,24 +52,21 @@ branch review:
     - master
 
 
-deploy_rabbit_job:
+deploy_Rabbit_job:
   stage: deploy
+  when: manual
   script:
     - echo 'Deploy Rabbitmq'
     - kubectl apply -f kubernetes/rmq/ -n dev
 
-deploy_mongo_job:
-  stage: deploy
-  script:    
-    - echo 'Deploy MONGO'
-    - kubectl apply -f kubernetes/app/ -n dev
-
-deploy_elk_job:
+deploy_App_job:
   stage: deploy
   when: manual
   script:    
-    - echo 'Deploy Elastic'
-    - kubectl apply -f kubernetes/logger/ -n dev
+    - echo 'Deploy App'
+    - kubectl apply -f kubernetes/app/ -n dev
+
+
 
   environment:
     name: dev
